@@ -6,7 +6,7 @@ export default class CreateStudent extends Component {
     return (
       <div>
         <Header/>
-        Murali.....
+
       </div>
     );
   }
