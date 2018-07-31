@@ -30,7 +30,7 @@ class Students extends Component {
 
     return students.map(student => {
       return (<tr key={student.rollNumber}>
-        <td style={{textTransform: 'capitalize'}}>{student.name}</td>
+        <td style={{textTransform: 'capitalize'}} className={student.status === "Pass" ? "passed": "failed"}>{student.name}</td>
         <td>{student.rollNumber}</td>
         <td>
           {student.total}
