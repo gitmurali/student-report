@@ -1,0 +1,62 @@
+import express from 'express';
+import webpack from 'webpack';
+import path from 'path';
+import config from '../webpack.config.dev';
+import open from 'open';
+
+/* eslint-disable no-console */
+
+const port = 3000;
+const app = express();
+const compiler = webpack(config);
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
+
+app.use(require('webpack-hot-middleware')(compiler));
+
+app.get('/api/students', (req, res) => {
+  res.send({students: [
+      {
+        "name": "rajiv",
+        "marks": {
+          "Maths": 18,
+          "English": 21,
+          "Science": 45
+        },
+        "rollNumber": "KV2017-5A2"
+      },
+      {
+        "name": "abhishek",
+        "marks": {
+          "Maths": 43,
+          "English": 30,
+          "Science": 37
+        },
+        "rollNumber": "KV2017-5A1"
+      },
+      {
+        "name": "zoya",
+        "marks": {
+          "Maths": 42,
+          "English": 31,
+          "Science": 50
+        },
+        "rollNumber": "KV2017-5A3"
+      }
+    ]});
+});
+
+app.get('*', function(req, res) {
+  res.sendFile(path.join( __dirname, '../src/index.html'));
+});
+
+app.listen(port, function(err) {
+  if (err) {
+    console.log(err);
+  } else {
+    open(`http://localhost:${port}`);
+  }
+});
