@@ -24,7 +24,7 @@ export default class Header extends Component {
               Create Student
             </NavItem>
           </Nav>
-        </Navbar>;
+        </Navbar>
       </div>
     );
   }
