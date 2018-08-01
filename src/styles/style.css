@@ -1,7 +1,11 @@
 .failed{
-  color: red;
+  color: #ff0000;
 }
 
 .passed {
-  color: green;
+  color: #00ff00;
+}
+
+.text-help {
+  color: #ff0000;
 }
